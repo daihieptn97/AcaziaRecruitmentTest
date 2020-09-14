@@ -7,11 +7,30 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "android-dev": "cd android/ && ENVFILE=.env.dev ./gradlew installDevDebug",
+    "android-staging": "cd android/ && ENVFILE=.env.staging ./gradlew installStagingDebug",
+    "android-prod": "cd android/ && ENVFILE=.env.prod ./gradlew installProDebug",
+    "release-apk-dev": "cd android/ && ENVFILE=.env.dev ./gradlew installDevRelease",
+    "release-apk-staging": "cd android/ && ENVFILE=.env.dev ./gradlew installStagingRelease",
+    "release-apk-prod": "cd android/ && ENVFILE=.env.dev ./gradlew installProRelease",
+    "build-android-release-apk": "chmod 755 android/gradlew && cd android && ./gradlew assembleRelease --stacktrace ",
+    "build-android-release-apk-dev": "export ENVFILE=.env.dev && chmod 755 android/gradlew && cd android && ./gradlew assembleDevRelease --stacktrace ",
+    "build-android-release-apk-prod": "export ENVFILE=.env.prod && chmod 755 android/gradlew && cd android && ./gradlew assembleRelease --stacktrace ",
+    "build-android-release-aab": "chmod 755 android/gradlew && cd android && ./gradlew bundleRelease --stacktrace ",
+    "build-android-release-aab-dev": "export ENVFILE=.env.dev && chmod 755 android/gradlew && cd android && ./gradlew bundleDevRelease --stacktrace ",
+    "build-android-release-aab-prod": "export ENVFILE=.env.prod && chmod 755 android/gradlew && cd android && ./gradlew bundleRelease --stacktrace ",
+    "clean:build:android": "rm -rf android/app/build",
+    "clean-android": "cd android && ./gradlew clean ",
+    "ba": "cd android && ./gradlew assembleRelease",
+    "open-build": "open android/app/build/outputs/apk/release/",
+    "pod": "cd ios && yarn install && pod install",
+    "pod update": "cd ios && pod update"
   },
   "dependencies": {
     "react": "16.11.0",
-    "react-native": "0.62.2"
+    "react-native": "0.62.2",
+    "react-native-vector-icons": "^7.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
