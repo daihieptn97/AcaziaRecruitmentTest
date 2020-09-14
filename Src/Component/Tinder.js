@@ -19,13 +19,16 @@ function Tinder({user}) {
     const [indexChecked, setIndexChecked] = useState(2);
     const [info, setInfo] = useState('');
     const [checks, setChecks] = useState(() => {
-        checkData[indexChecked] = true;
-        return checkData;
+        let temp = _.cloneDeep(checkData);
+        temp[indexChecked] = true;
+        return temp;
     });
 
     const doSet = (index) => {
+        console.log(index);
         let temp = _.cloneDeep(checkData);
         temp[index] = true;
+        console.log(temp, user.phone);
         setIndexChecked(index);
         setChecks(temp);
     };
@@ -59,7 +62,6 @@ function Tinder({user}) {
     };
 
     const getIconControl = (index) => {
-        console.log(checks);
         return <TouchableOpacity style={styles.iconControl} onPress={() => doSet(index)}>
             <View style={{alignItems: 'center'}}>
                 <View style={{
