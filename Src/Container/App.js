@@ -49,22 +49,24 @@ export default function () {
         }
     }
 
+    const doGetData = (state) => {
+        if (state.isConnected) {
+            if (!persons || persons.length <= 0) {
+                getUser();
+                getUser();
+                getUser();
+            }
+            setConnected(true);
+        } else {
+            setConnected(false);
+        }
+    };
     const handleChangeAppState = (newState) => {
         try {
             if (newState === 'active') {
                 NetInfo.addEventListener(state => {
                     console.log('Is connected?', state.isConnected);
-
-                    if (state.isConnected) {
-                        if (!persons || persons.length <= 0) {
-                            getUser();
-                            getUser();
-                            getUser();
-                        }
-                        setConnected(true);
-                    } else {
-                        setConnected(false);
-                    }
+                    doGetData(state);
                 });
             }
         } catch (e) {
@@ -73,6 +75,11 @@ export default function () {
     };
 
     useEffect(() => {
+
+        NetInfo.fetch().then(state => {
+            doGetData(state);
+        });
+
         AppState.addEventListener('change', handleChangeAppState);
         return () => {
             AppState.removeEventListener('change', handleChangeAppState);
