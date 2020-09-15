@@ -5,7 +5,7 @@ axios.defaults.baseURL = Base_URL;
 export const getPersonApi = '0.4/?randomapi';
 
  function requestGet(link) {
-    return  axios.get(link).then((response) => response.data);
+    return  axios.get(link).then((response) => response.data).catch(e => console.log(e));
 }
 export default {
     get: requestGet,

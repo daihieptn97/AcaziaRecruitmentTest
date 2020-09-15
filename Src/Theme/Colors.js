@@ -13,7 +13,6 @@ export default {
     mainBlack: '#465867',
     mainGrey: '#b4bcca',
     black: '#000000',
-    // poken colors:
     iconBackground: '#fffbf5',
     beige01: '#FFFBF5',
     beige02: '#F5DEBC',
@@ -29,7 +28,6 @@ export default {
     grey02: '#465867',
     grey03: '#212A32',
 
-    iconOn: '#3dbb8a',
-    iconOff: '#bec0c1',
+
 
 };
